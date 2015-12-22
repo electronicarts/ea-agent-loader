@@ -7,7 +7,7 @@ It was developed by [BioWare](http://www.bioware.com), a division of [Electronic
 
 License
 =======
-EA Agent Loader  is licensed under the [BSD 3-Clause License](../../LICENSE).
+EA Agent Loader  is licensed under the [BSD 3-Clause License](./LICENSE).
 
 Example
 =======
