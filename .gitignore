@@ -1,0 +1,6 @@
+*.iml
+.idea
+target
+*.versionsBackup
+dependency-reduced-pom.xml
+tests.yml
