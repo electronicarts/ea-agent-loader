@@ -26,7 +26,7 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.ea.orbit.instrumentation.test;/*
+package com.ea.agentloader.test;/*
  Copyright (C) 2015 Electronic Arts Inc.  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -54,41 +54,33 @@ package com.ea.orbit.instrumentation.test;/*
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import com.ea.orbit.instrumentation.AgentLoader;
-
-import org.junit.Test;
+import com.ea.agentloader.AgentLoader;
+import com.ea.agentloader.ClassPathUtils;
 
 import java.lang.instrument.Instrumentation;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 
-public class AgentFailure
+public class HelloAgentWorld
 {
-    public static class FailAgent
+    public static class HelloAgent
     {
         public static void agentmain(String agentArgs, Instrumentation inst)
         {
+            System.out.println(agentArgs);
+            System.out.println("Hi from the agent!");
+            System.out.println("I've got instrumentation!: " + inst);
         }
     }
 
-    @Test
-    public void testNotPresentInSystemClassLoader()
+    public static void main(String[] args)
     {
-        //assertNotEquals(ClassLoader.getSystemClassLoader(), FailAgent.class.getClassLoader());
-        if (ClassLoader.getSystemClassLoader() != FailAgent.class.getClassLoader())
+        // this example only works if the current classloader is the system classloader
+        if (ClassLoader.getSystemClassLoader() != HelloAgent.class.getClassLoader())
         {
-            try
-            {
-                AgentLoader.loadAgentClass(FailAgent.class.getName(), null, null, false, false, false);
-            }
-            catch (Exception ex)
-            {
-                return;
-            }
-            // this test must run from a special maven configuration that
-            // will cause the agent to fail.
-            fail("Should have failed");
+            ClassPathUtils.appendToSystemPath(ClassPathUtils.getClassPathFor(HelloAgent.class));
         }
+        AgentLoader.loadAgentClass(HelloAgent.class.getName(), "Hello!");
     }
 }

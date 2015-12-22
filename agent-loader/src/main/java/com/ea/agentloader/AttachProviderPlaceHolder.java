@@ -26,7 +26,7 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.ea.orbit.instrumentation;
+package com.ea.agentloader;
 
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
@@ -61,5 +61,5 @@ class AttachProviderPlaceHolder extends AttachProvider
     {
         return null;
     }
-};
+}
 

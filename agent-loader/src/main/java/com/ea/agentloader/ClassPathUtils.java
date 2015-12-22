@@ -26,7 +26,7 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.ea.orbit.instrumentation;
+package com.ea.agentloader;
 
 import java.io.File;
 import java.io.IOException;

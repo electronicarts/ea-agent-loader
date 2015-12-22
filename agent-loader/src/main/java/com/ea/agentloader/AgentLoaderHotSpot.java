@@ -26,7 +26,7 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.ea.orbit.instrumentation;
+package com.ea.agentloader;
 
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.spi.AttachProvider;
@@ -43,7 +43,7 @@ public class AgentLoaderHotSpot
     /**
      * Dynamically loads a java agent.
      * Deals with the problem of finding the proper jvm classes.
-     * Don't call this method directly use {@link com.ea.orbit.instrumentation.AgentLoader#loadAgent}  instead
+     * Don't call this method directly use {@link AgentLoader#loadAgent}  instead
      *
      * @param agentJar the agent jar
      * @param options  options that will be passed back to the agent, can be null

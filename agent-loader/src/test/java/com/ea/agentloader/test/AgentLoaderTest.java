@@ -26,7 +26,7 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.ea.orbit.instrumentation.test;/*
+package com.ea.agentloader.test;/*
  Copyright (C) 2015 Electronic Arts Inc.  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -54,38 +54,56 @@ package com.ea.orbit.instrumentation.test;/*
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import com.ea.orbit.instrumentation.AgentLoader;
-import com.ea.orbit.instrumentation.ClassPathUtils;
+import com.ea.agentloader.AgentLoader;
+import com.ea.agentloader.ClassPathUtils;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-import sun.tools.java.ClassPath;
-
-import java.awt.*;
 import java.lang.instrument.Instrumentation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 
-public class HelloAgentWorld
+public class AgentLoaderTest
 {
-    public static class HelloAgent
+    public static class SomeAgent
     {
         public static void agentmain(String agentArgs, Instrumentation inst)
         {
-            System.out.println(agentArgs);
-            System.out.println("Hi from the agent!");
-            System.out.println("I've got instrumentation!: " + inst);
+            System.setProperty(SomeAgent.class.getName(), agentArgs);
         }
     }
 
-    public static void main(String[] args)
+    @Test
+    public void testLoading()
     {
-        // this example only works if the current classloader is the system classloader
-        if (ClassLoader.getSystemClassLoader() != HelloAgent.class.getClassLoader())
+        if (ClassLoader.getSystemClassLoader() != SomeAgent.class.getClassLoader())
         {
-            ClassPathUtils.appendToSystemPath(ClassPathUtils.getClassPathFor(HelloAgent.class));
+            ClassPathUtils.appendToSystemPath(ClassPathUtils.getClassPathFor(SomeAgent.class));
         }
-        AgentLoader.loadAgentClass(HelloAgent.class.getName(), "Hello!");
+        String options = "test" + System.currentTimeMillis();
+        AgentLoader.loadAgentClass(SomeAgent.class.getName(), options, null, false, false, false);
+        assertEquals(options, System.getProperty(SomeAgent.class.getName()));
+    }
+
+    @Test
+    public void testLoadingWithParameters()
+    {
+        if (ClassLoader.getSystemClassLoader() != SomeAgent.class.getClassLoader())
+        {
+            ClassPathUtils.appendToSystemPath(ClassPathUtils.getClassPathFor(SomeAgent.class));
+        }
+        String options = "test" + System.currentTimeMillis();
+        AgentLoader.loadAgentClass(SomeAgent.class.getName(), options, null, false, false, false);
+        assertEquals(options, System.getProperty(SomeAgent.class.getName()));
+    }
+
+
+    @Ignore
+    public void testWrongClassNameFailure()
+    {
+        AgentLoader.loadAgentClass("bogusname", null);
     }
 }
