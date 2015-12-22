@@ -1,6 +1,8 @@
 EA Agent Loader
 ============
 
+[![Build Status](https://img.shields.io/travis/electronicarts/ea-agent-loader.svg)](https://travis-ci.org/electronicarts/ea-agent-loader)
+
 EA Agent Loader is a collection of utilities for [java agent](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/package-summary.html) developers.
 It allows programmers to write and test their java agents using dynamic agent loading (without using the -javaavent jvm parameter).
 It was developed by [BioWare](http://www.bioware.com), a division of [Electronic Arts](http://www.ea.com).
