@@ -3,6 +3,7 @@ EA Agent Loader
 
 [![Release](https://img.shields.io/github/release/electronicarts/ea-agent-loader.svg)](https://github.com/electronicarts/ea-agent-loader/releases)
 [![Maven Central](https://img.shields.io/maven-central/v/com.ea.agentloader/ea-agent-loader-parent.svg)](http://repo1.maven.org/maven2/com/ea/agentloader/)
+[![Javadocs](https://img.shields.io/maven-central/v/com.ea.agentloader/ea-agent-loader.svg?label=Javadocs)](http://www.javadoc.io/doc/com.ea.agentloader/ea-agent-loader)
 [![Build Status](https://img.shields.io/travis/electronicarts/ea-agent-loader.svg)](https://travis-ci.org/electronicarts/ea-agent-loader)
 
 EA Agent Loader is a collection of utilities for [java agent](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/package-summary.html) developers.
