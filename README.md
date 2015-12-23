@@ -1,7 +1,7 @@
 EA Agent Loader
 ============
 
-[![Release](https://img.shields.io/github/release/electronicarts/ea-agent-loader.svg)](https://github.com/electronicarts/ea-agent-loader)
+[![Release](https://img.shields.io/github/release/electronicarts/ea-agent-loader.svg)](https://github.com/electronicarts/ea-agent-loader/releases)
 [![Maven Central](https://img.shields.io/maven-central/v/com.ea.agentloader/ea-agent-loader-parent.svg)](http://repo1.maven.org/maven2/com/ea/agentloader)
 [![Build Status](https://img.shields.io/travis/electronicarts/ea-agent-loader.svg)](https://travis-ci.org/electronicarts/ea-agent-loader)
 
