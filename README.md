@@ -8,11 +8,10 @@ EA Agent Loader
 
 EA Agent Loader is a collection of utilities for [java agent](https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/package-summary.html) developers.
 It allows programmers to write and test their java agents using dynamic agent loading (without using the -javaavent jvm parameter).
-It was developed by [BioWare](http://www.bioware.com), a division of [Electronic Arts](http://www.ea.com) and was originally part of the [Orbit Project](https://github.com/electronicarts/orbit).
 
-License
-=======
-EA Agent Loader  is licensed under the [BSD 3-Clause License](./LICENSE).
+Developer & License
+======
+This project was developed by [Electronic Arts](http://www.ea.com) and is licensed under the [BSD 3-Clause License](LICENSE).
 
 Example
 =======
