@@ -284,6 +284,7 @@ public class AgentLoader
             final boolean canSetNativeMethodPrefix) throws IOException
     {
         final File jarFile = File.createTempFile("javaagent." + agentClass, ".jar");
+        jarFile.deleteOnExit();
         createAgentJar(new FileOutputStream(jarFile),
                 agentClass,
                 bootClassPath,
