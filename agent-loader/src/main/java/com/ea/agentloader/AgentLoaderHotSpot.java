@@ -33,6 +33,7 @@ import com.sun.tools.attach.spi.AttachProvider;
 
 import java.lang.management.ManagementFactory;
 import java.lang.reflect.Constructor;
+import java.util.Locale;
 
 /**
  * Agent load for the hotspot virtual machine and virtual machines that provide con.sun.tools.attach.*
@@ -90,7 +91,7 @@ public class AgentLoaderHotSpot
             }
         }
 
-        String jvm = System.getProperty("java.vm.name").toLowerCase();
+        String jvm = System.getProperty("java.vm.name").toLowerCase(Locale.ENGLISH);
         if (jvm.contains("hotspot") || jvm.contains("openjdk"))
         {
             // tools jar not present, but it's a sun vm
@@ -136,7 +137,7 @@ public class AgentLoaderHotSpot
     @SuppressWarnings("unchecked")
     private static Class<VirtualMachine> pickVmImplementation()
     {
-        String os = System.getProperty("os.name").toLowerCase();
+        String os = System.getProperty("os.name").toLowerCase(Locale.ENGLISH);
         try
         {
             if (os.contains("win"))
