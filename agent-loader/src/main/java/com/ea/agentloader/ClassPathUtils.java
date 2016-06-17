@@ -35,6 +35,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * Class path and class loader utilities to help java agent developers.
@@ -60,11 +61,11 @@ public class ClassPathUtils
         {
             final URL url = getClassFile(clazz);
             String urlString = url.toString();
-            final int endIndex = urlString.toLowerCase().indexOf("!");
+            final int endIndex = urlString.indexOf("!");
             if (endIndex > 0)
             {
                 // assuming it's something inside a jar
-                int beginIndex = urlString.lastIndexOf("file:/");
+                int beginIndex = urlString.toLowerCase(Locale.ENGLISH).lastIndexOf("file:/");
                 if (beginIndex >= 0)
                 {
                     return new URL(urlString.substring(beginIndex, endIndex));
