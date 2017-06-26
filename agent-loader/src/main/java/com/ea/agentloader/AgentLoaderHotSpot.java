@@ -92,7 +92,7 @@ public class AgentLoaderHotSpot
         }
 
         String jvm = System.getProperty("java.vm.name").toLowerCase(Locale.ENGLISH);
-        if (jvm.contains("hotspot") || jvm.contains("openjdk"))
+        if (jvm.contains("hotspot") || jvm.contains("openjdk") || jvm.contains("dynamic code evolution"))
         {
             // tools jar not present, but it's a sun vm
             Class<VirtualMachine> virtualMachineClass = pickVmImplementation();
